@@ -6,7 +6,7 @@ const App = () => {
 
   const validateAadhaar = async () => {
     // Call to Python backend for Aadhaar validation
-    const response = await fetch('http://localhost:5000/validate-aadhaar', {
+    const response = await fetch('/api/validate-aadhaar', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ aadhaarNumber }),
