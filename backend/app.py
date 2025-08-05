@@ -37,7 +37,7 @@ def is_aadhaar_valid(aadhaar_number):
     except (ValueError, TypeError):
         return False
 
-@app.route('/validate-aadhaar', methods=['POST'])
+@app.route('/api/validate-aadhaar', methods=['POST'])
 def validate_aadhaar_endpoint():
     data = request.get_json()
     aadhaar_number = data.get('aadhaarNumber')
