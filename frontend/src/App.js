@@ -5,7 +5,7 @@ const App = () => {
   const [validationResult, setValidationResult] = useState(null);
 
   const validateAadhaar = async () => {
-    // Call to Python backend for Aadhaar validation
+    // The API call remains the same
     const response = await fetch('/api/validate-aadhaar', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -16,26 +16,40 @@ const App = () => {
   };
 
   return (
-    <div className="flex flex-col items-center bg-white p-10 rounded-lg shadow-lg">
-      <h1 className="text-2xl font-bold mb-4">Aadhaar Card Validator</h1>
-      <input
-        type="text"
-        placeholder="Enter Aadhaar number"
-        value={aadhaarNumber}
-        onChange={(e) => setAadhaarNumber(e.target.value)}
-        className="p-2 border border-gray-300 rounded mb-4"
+    <div className="bg-white p-8 sm:p-10 rounded-xl shadow-2xl w-full max-w-md text-center">
+      <img 
+        src="https://i.imgur.com/VfKCeD8.png" 
+        alt="Aadhaar Card Emblem" 
+        className="w-24 sm:w-32 mx-auto mb-6" 
       />
-      <button
-        onClick={validateAadhaar}
-        className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700"
-      >
-        Validate
-      </button>
+      <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-2">
+        Aadhaar Validator
+      </h1>
+      <p className="text-gray-500 mb-8">
+        Enter a 12-digit Aadhaar number to verify.
+      </p>
+      
+      <div className="space-y-6">
+        <input
+          type="text"
+          placeholder="XXXX XXXX XXXX"
+          maxLength="12"
+          value={aadhaarNumber}
+          onChange={(e) => setAadhaarNumber(e.target.value.replace(/\D/g, ''))} // Allow only digits
+          className="w-full px-4 py-3 text-lg bg-gray-100 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 focus:outline-none transition-shadow"
+        />
+        <button
+          onClick={validateAadhaar}
+          className="w-full px-4 py-3 text-lg font-semibold text-white bg-gradient-to-r from-orange-500 to-red-500 rounded-lg hover:from-orange-600 hover:to-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300"
+        >
+          Validate
+        </button>
+      </div>
 
       {validationResult !== null && (
-        <p className={`mt-4 text-xl ${validationResult ? 'text-green-500' : 'text-red-500'}`}>
-          {validationResult ? 'Valid Aadhaar Number' : 'Invalid Aadhaar Number'}
-        </p>
+        <div className={`mt-8 p-4 rounded-lg text-lg font-semibold ${validationResult ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
+          {validationResult ? '✅ Valid Aadhaar Number' : '❌ Invalid Aadhaar Number'}
+        </div>
       )}
     </div>
   );
