@@ -18,7 +18,7 @@ const App = () => {
   return (
     <div className="bg-white p-8 sm:p-10 rounded-xl shadow-2xl w-full max-w-md text-center">
       <img 
-        src="https://i.imgur.com/VfKCeD8.png" 
+        src="https://cdn.iconscout.com/icon/free/png-256/free-aadhaar-2085055-1747945.png" 
         alt="Aadhaar Card Emblem" 
         className="w-24 sm:w-32 mx-auto mb-6" 
       />
