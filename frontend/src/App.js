@@ -22,17 +22,30 @@ const App = () => {
       transition={{ duration: 0.6 }}
       className="bg-white p-8 sm:p-10 rounded-xl shadow-2xl w-full max-w-md text-center mx-auto mt-10"
     >
-      <img
+      <motion.img
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5 }}
         src="https://cdn.iconscout.com/icon/free/png-256/free-aadhaar-2085055-1747945.png"
         alt="Aadhaar Card Emblem"
         className="w-24 sm:w-32 mx-auto mb-6"
       />
-      <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-2">
+      <motion.h1
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.3, duration: 0.5 }}
+        className="text-2xl sm:text-3xl font-bold text-gray-800 mb-2"
+      >
         Aadhaar Validator
-      </h1>
-      <p className="text-gray-500 mb-8">
+      </motion.h1>
+      <motion.p
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.4, duration: 0.5 }}
+        className="text-gray-500 mb-8"
+      >
         Enter a 12-digit Aadhaar number to verify.
-      </p>
+      </motion.p>
 
       <div className="space-y-6">
         <input
